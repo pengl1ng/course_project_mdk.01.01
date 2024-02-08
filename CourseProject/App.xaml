@@ -17,7 +17,7 @@
             </Setter>
 
             <Setter Property="BorderBrush" Value="#E79E85"/>
-            <Setter Property="Background" Value="#E79E85"/>
+            <Setter Property="Background" Value="#F2E9D0"/>
 
             <Setter Property="Template">
                 <Setter.Value>
@@ -81,8 +81,37 @@
             </Setter>
         </Style>
 
-        <Style x:Key="MainFrame" TargetType="Frame">
-            
+        <Style x:Key="StackPanelShop" TargetType="StackPanel">
+            <Setter Property="Background" Value="#EACEB4"/>
+        </Style>
+
+        <Style x:Key="SearchTitle" TargetType="TextBlock">
+            <Setter Property="FontSize" Value="12"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="Foreground" Value="#BB5A5A"/>
+            <Setter Property="Margin" Value="233,5,5,5"/>
+        </Style>
+
+        <Style x:Key="SearchBar" TargetType="TextBox">
+            <Setter Property="Width" Value="341"/>
+            <Setter Property="Height" Value="29"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="BorderBrush" Value="#BB5A5A"/>
+            <Setter Property="Background" Value="#E79E85"/>
+            <Setter Property="Foreground" Value="#F2E9D0"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="TextBox">
+                        <Border Background="{TemplateBinding Background}"
+                                BorderBrush="{TemplateBinding BorderBrush}"
+                                BorderThickness="1,1,1,1">
+                            <AdornerDecorator>
+                                <ContentPresenter/>
+                            </AdornerDecorator>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
         </Style>
     </Application.Resources>
 </Application>

@@ -15,17 +15,23 @@ namespace CourseProject
     {
         private void btnMinimize_Click(object sender, RoutedEventArgs e)
         {
-
+            var window = (Window)((FrameworkElement)sender).TemplatedParent;
+            window.WindowState = WindowState.Minimized;
         }
 
         private void btnRestore_Click(object sender, RoutedEventArgs e)
         {
-
+            var window = (Window)((FrameworkElement)sender).TemplatedParent;
+            if (window.WindowState == WindowState.Normal)
+                window.WindowState = WindowState.Maximized;
+            else
+                window.WindowState = WindowState.Normal;
         }
 
         private void btnClose_Click(object sender, RoutedEventArgs e)
         {
-
+            var window = (Window)((FrameworkElement)sender).TemplatedParent;
+            window.Close();
         }
     }
 }

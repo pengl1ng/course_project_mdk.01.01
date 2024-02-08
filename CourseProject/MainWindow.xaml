@@ -8,6 +8,6 @@
         Title="MainWindow" Height="600" Width="1000"
         Style="{StaticResource CustomWindowStyle}">
     <Grid>
-        
+        <Frame x:Name="_MainFrame" NavigationUIVisibility="Hidden"/>
     </Grid>
 </Window>
