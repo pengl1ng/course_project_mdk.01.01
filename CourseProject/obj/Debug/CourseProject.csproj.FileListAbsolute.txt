@@ -1,0 +1,17 @@
+D:\ProjectsC#\CourseProject\bin\Debug\CourseProject.exe.config
+D:\ProjectsC#\CourseProject\bin\Debug\CourseProject.exe
+D:\ProjectsC#\CourseProject\bin\Debug\CourseProject.pdb
+D:\ProjectsC#\CourseProject\obj\Debug\CourseProject.csproj.AssemblyReference.cache
+D:\ProjectsC#\CourseProject\obj\Debug\CourseProject.csproj.SuggestedBindingRedirects.cache
+D:\ProjectsC#\CourseProject\obj\Debug\MainWindow.g.cs
+D:\ProjectsC#\CourseProject\obj\Debug\App.g.cs
+D:\ProjectsC#\CourseProject\obj\Debug\CourseProject_MarkupCompile.cache
+D:\ProjectsC#\CourseProject\obj\Debug\CourseProject_MarkupCompile.lref
+D:\ProjectsC#\CourseProject\obj\Debug\App.baml
+D:\ProjectsC#\CourseProject\obj\Debug\MainWindow.baml
+D:\ProjectsC#\CourseProject\obj\Debug\CourseProject.g.resources
+D:\ProjectsC#\CourseProject\obj\Debug\CourseProject.Properties.Resources.resources
+D:\ProjectsC#\CourseProject\obj\Debug\CourseProject.csproj.GenerateResource.cache
+D:\ProjectsC#\CourseProject\obj\Debug\CourseProject.csproj.CoreCompileInputs.cache
+D:\ProjectsC#\CourseProject\obj\Debug\CourseProject.exe
+D:\ProjectsC#\CourseProject\obj\Debug\CourseProject.pdb
