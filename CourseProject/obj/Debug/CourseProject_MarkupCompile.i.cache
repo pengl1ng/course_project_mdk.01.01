@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-F:\C#Projects\course_project_mdk.01.01\CourseProject\obj\Debug\
+D:\ProjectsC#\course_project_mdk.01.01\CourseProject\obj\Debug\
 CourseProject
 none
 false
 DEBUG;TRACE
-F:\C#Projects\course_project_mdk.01.01\CourseProject\App.xaml
-2-213997779
-21518646237
-18-265205486
-181388973069
-MainWindow.xaml;Pages\MainPage.xaml;
+D:\ProjectsC#\course_project_mdk.01.01\CourseProject\App.xaml
+3967223605
+4-997453424
+22-1593731692
+18305210957
+MainWindow.xaml;Pages\AuthorizationPage.xaml;Pages\MainPage.xaml;
 
 True
 

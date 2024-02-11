@@ -1,0 +1,33 @@
+﻿<Page x:Class="CourseProject.Pages.AuthorizationPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:CourseProject.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="555" d:DesignWidth="980"
+      Title="AuthorizationPage">
+
+    <Grid>
+        <StackPanel Style="{StaticResource SPanelAuth}">
+            <TextBlock Text="Авторизация" Margin="10"
+                       Style="{StaticResource TBlockPageName}"/>
+            <StackPanel Orientation="Horizontal"
+                        Margin="10">
+                <TextBlock Text="Почта" Style="{StaticResource TBlockAuthData}"/>
+                <TextBox x:Name="TBoxEmail" Style="{StaticResource TBoxAuthFields}"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal"
+                        Margin="10">
+                <TextBlock Text="Пароль" Style="{StaticResource TBlockAuthData}"/>
+                <PasswordBox x:Name="PassBox" Style="{StaticResource PBoxAuthField}"/>
+            </StackPanel>
+            <Button x:Name="btnAuthorize" Content="Войти"
+                    Click="btnAuthorize_Click"
+                    Style="{StaticResource AuthorizationPageButtons}"/>
+            <Button x:Name="btnRegistration" Content="Зарегистрироваться"
+                    Click="btnRegistration_Click"
+                    Style="{StaticResource AuthorizationPageButtons}"/>
+        </StackPanel>
+    </Grid>
+</Page>

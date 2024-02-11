@@ -11,6 +11,6 @@ namespace CourseProject.Helpers
     public static class AppHelper
     {
         public static Frame MainFrame = new Frame();
-        public static DbEntities DbConnect = new DbEntities();
+        public static HomeDbEntities DbConnect = new HomeDbEntities();
     }
 }

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="a6cea6f20dc84af2b38550b5a91275e8" Name="Diagram1">
+        <EntityTypeShape EntityType="HomeDbModel.Categories" Width="1.5" PointX="3" PointY="8.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="HomeDbModel.Order_Product" Width="1.5" PointX="7.5" PointY="1.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="HomeDbModel.Orders" Width="1.5" PointX="5.25" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="HomeDbModel.OrderStatuses" Width="1.5" PointX="3" PointY="5.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="HomeDbModel.Products" Width="1.5" PointX="5.25" PointY="8" IsExpanded="true" />
+        <EntityTypeShape EntityType="HomeDbModel.Roles" Width="1.5" PointX="0.75" PointY="1.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="HomeDbModel.Users" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
+        <AssociationConnector Association="HomeDbModel.FK_Products_Categories" ManuallyRouted="false" />
+        <AssociationConnector Association="HomeDbModel.FK_Order_Product_Orders" ManuallyRouted="false" />
+        <AssociationConnector Association="HomeDbModel.FK_Order_Product_Products" ManuallyRouted="false" />
+        <AssociationConnector Association="HomeDbModel.FK_Orders_OrderStatuses" ManuallyRouted="false" />
+        <AssociationConnector Association="HomeDbModel.FK_Orders_Users" ManuallyRouted="false" />
+        <AssociationConnector Association="HomeDbModel.FK_Users_Roles" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

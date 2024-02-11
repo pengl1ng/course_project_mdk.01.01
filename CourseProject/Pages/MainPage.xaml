@@ -23,12 +23,21 @@
                     Style="{StaticResource StackPanelShop}">
             <TextBlock Text="Поиск:" Style="{StaticResource SearchTitle}"/>
             <TextBox x:Name="tboxSearch" Style="{StaticResource SearchBar}"/>
-            <Button x:Name="btnCart" Click="btnCart_Click"/>
+            <Button x:Name="btnCart" Click="btnCart_Click"
+                    Style="{StaticResource CartButton}"/>
+            <Grid Margin="50,5,5,5">
+                <Button x:Name="btnAuthorize" Content="Войти"
+                        Width="112" Height="30"
+                        Style="{StaticResource AuthButton}"
+                        Click="btnAuthorize_Click"/>
+                <TextBlock Text="{Binding UserName}"
+                           Style="{StaticResource UserNameTBlock}"
+                           Visibility="Collapsed"/>
+            </Grid>
         </StackPanel>
 
         <StackPanel Orientation="Vertical" Grid.Row="1" 
                     Style="{StaticResource StackPanelShop}">
-            
         </StackPanel>
     </Grid>
 </Page>

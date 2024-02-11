@@ -73,7 +73,7 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="DataBaseModel\Categories.cs">
-      <DependentUpon>DbModel.tt</DependentUpon>
+      <DependentUpon>HomeDbModel.tt</DependentUpon>
     </Compile>
     <Compile Include="DataBaseModel\DbModel.Context.cs">
       <AutoGen>True</AutoGen>
@@ -90,35 +90,57 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>DbModel.edmx</DependentUpon>
     </Compile>
+    <Compile Include="DataBaseModel\HomeDbModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>HomeDbModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataBaseModel\HomeDbModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>HomeDbModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataBaseModel\HomeDbModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>HomeDbModel.edmx</DependentUpon>
+    </Compile>
     <Compile Include="DataBaseModel\Orders.cs">
-      <DependentUpon>DbModel.tt</DependentUpon>
+      <DependentUpon>HomeDbModel.tt</DependentUpon>
     </Compile>
     <Compile Include="DataBaseModel\OrderStatuses.cs">
-      <DependentUpon>DbModel.tt</DependentUpon>
+      <DependentUpon>HomeDbModel.tt</DependentUpon>
     </Compile>
     <Compile Include="DataBaseModel\Order_Product.cs">
-      <DependentUpon>DbModel.tt</DependentUpon>
+      <DependentUpon>HomeDbModel.tt</DependentUpon>
     </Compile>
     <Compile Include="DataBaseModel\Products.cs">
-      <DependentUpon>DbModel.tt</DependentUpon>
+      <DependentUpon>HomeDbModel.tt</DependentUpon>
     </Compile>
     <Compile Include="DataBaseModel\Roles.cs">
-      <DependentUpon>DbModel.tt</DependentUpon>
+      <DependentUpon>HomeDbModel.tt</DependentUpon>
     </Compile>
     <Compile Include="DataBaseModel\Users.cs">
-      <DependentUpon>DbModel.tt</DependentUpon>
+      <DependentUpon>HomeDbModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Helpers\AppHelper.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Pages\AuthorizationPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Pages\MainPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Pages\AuthorizationPage.xaml.cs">
+      <DependentUpon>AuthorizationPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
@@ -146,6 +168,13 @@
     <None Include="DataBaseModel\DbModel.edmx.diagram">
       <DependentUpon>DbModel.edmx</DependentUpon>
     </None>
+    <EntityDeploy Include="DataBaseModel\HomeDbModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>HomeDbModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="DataBaseModel\HomeDbModel.edmx.diagram">
+      <DependentUpon>HomeDbModel.edmx</DependentUpon>
+    </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -166,12 +195,21 @@
       <DependentUpon>DbModel.edmx</DependentUpon>
       <LastGenOutput>DbModel.cs</LastGenOutput>
     </Content>
+    <Content Include="DataBaseModel\HomeDbModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>HomeDbModel.edmx</DependentUpon>
+      <LastGenOutput>HomeDbModel.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="DataBaseModel\HomeDbModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>HomeDbModel.edmx</DependentUpon>
+      <LastGenOutput>HomeDbModel.cs</LastGenOutput>
+    </Content>
+    <Resource Include="Images\cart.png" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Images\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

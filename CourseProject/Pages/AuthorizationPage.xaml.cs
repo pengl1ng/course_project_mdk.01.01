@@ -1,5 +1,4 @@
-﻿using CourseProject.Helpers;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -17,23 +16,23 @@ using System.Windows.Shapes;
 namespace CourseProject.Pages
 {
     /// <summary>
-    /// Логика взаимодействия для MainPage.xaml
+    /// Логика взаимодействия для AuthorizationPage.xaml
     /// </summary>
-    public partial class MainPage : Page
+    public partial class AuthorizationPage : Page
     {
-        public MainPage()
+        public AuthorizationPage()
         {
             InitializeComponent();
         }
 
-        private void btnCart_Click(object sender, RoutedEventArgs e)
+        private void btnAuthorize_Click(object sender, RoutedEventArgs e)
         {
 
         }
 
-        private void btnAuthorize_Click(object sender, RoutedEventArgs e)
+        private void btnRegistration_Click(object sender, RoutedEventArgs e)
         {
-            AppHelper.MainFrame.Navigate(new AuthorizationPage());
+
         }
     }
 }
