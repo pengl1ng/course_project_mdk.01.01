@@ -41,11 +41,12 @@
             <PropertyRef Name="ProductId" />
           </Key>
           <Property Name="ProductId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="ProductName" Type="nchar" MaxLength="10" Nullable="false" />
-          <Property Name="ProductDescription" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="ProductName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="ProductDescription" Type="text" Nullable="false" />
           <Property Name="ProductPrice" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="ProductAmount" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="ProductCategory" Type="int" Nullable="false" />
+          <Property Name="ProductImage" Type="varchar" MaxLength="50" Nullable="false" />
         </EntityType>
         <EntityType Name="Roles">
           <Key>
@@ -219,11 +220,12 @@
             <PropertyRef Name="ProductId" />
           </Key>
           <Property Name="ProductId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="ProductName" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
-          <Property Name="ProductDescription" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ProductName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ProductDescription" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="ProductPrice" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="ProductAmount" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="ProductCategory" Type="Int32" Nullable="false" />
+          <Property Name="ProductImage" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <NavigationProperty Name="Categories" Relationship="Self.FK_Products_Categories" FromRole="Products" ToRole="Categories" />
           <NavigationProperty Name="Order_Product" Relationship="Self.FK_Order_Product_Products" FromRole="Products" ToRole="Order_Product" />
         </EntityType>
@@ -404,6 +406,7 @@
                 <ScalarProperty Name="ProductPrice" ColumnName="ProductPrice" />
                 <ScalarProperty Name="ProductAmount" ColumnName="ProductAmount" />
                 <ScalarProperty Name="ProductCategory" ColumnName="ProductCategory" />
+                <ScalarProperty Name="ProductImage" ColumnName="ProductImage" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

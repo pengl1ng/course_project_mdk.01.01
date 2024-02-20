@@ -1,6 +1,7 @@
 ﻿using CourseProject.Helpers;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -24,6 +25,7 @@ namespace CourseProject.Pages
         public MainPage()
         {
             InitializeComponent();
+            lvProducts.DataContext = AppHelper.DbConnect.Products.ToList();
         }
 
         private void btnCart_Click(object sender, RoutedEventArgs e)
@@ -34,6 +36,11 @@ namespace CourseProject.Pages
         private void btnAuthorize_Click(object sender, RoutedEventArgs e)
         {
             AppHelper.MainFrame.Navigate(new AuthorizationPage());
+        }
+
+        private void btnAddToCart_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

@@ -39,5 +39,24 @@
         <StackPanel Orientation="Vertical" Grid.Row="1" 
                     Style="{StaticResource StackPanelShop}">
         </StackPanel>
+
+        <ListView x:Name="lvProducts" Grid.Row="1"
+                  Grid.Column="1">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Vertical">
+                        <Image>
+                            <Image.Source>
+                                <Binding Path="ProductImage"/>
+                            </Image.Source>
+                        </Image>
+                        <TextBlock Text="{Binding Path=ProductName}"/>
+                        <TextBlock Text="{Binding Path=ProductPrice}"/>
+                        <Button x:Name="btnAddToCart" Content="В корзину"
+                                Click="btnAddToCart_Click"/>
+                    </StackPanel>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
     </Grid>
 </Page>

@@ -45,6 +45,7 @@
           <ScalarProperty Name="ProductPrice" ColumnName="ProductPrice" />
           <ScalarProperty Name="ProductAmount" ColumnName="ProductAmount" />
           <ScalarProperty Name="ProductCategory" ColumnName="ProductCategory" />
+          <ScalarProperty Name="ProductImage" ColumnName="ProductImage" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

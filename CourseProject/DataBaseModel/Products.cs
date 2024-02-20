@@ -26,6 +26,7 @@ namespace CourseProject.DataBaseModel
         public string ProductPrice { get; set; }
         public string ProductAmount { get; set; }
         public int ProductCategory { get; set; }
+        public string ProductImage { get; set; }
     
         public virtual Categories Categories { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

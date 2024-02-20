@@ -36,11 +36,12 @@
       <PropertyRef Name="ProductId" />
     </Key>
     <Property Name="ProductId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="ProductName" Type="nchar" MaxLength="10" Nullable="false" />
-    <Property Name="ProductDescription" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="ProductName" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="ProductDescription" Type="text" Nullable="false" />
     <Property Name="ProductPrice" Type="varchar" MaxLength="50" Nullable="false" />
     <Property Name="ProductAmount" Type="varchar" MaxLength="50" Nullable="false" />
     <Property Name="ProductCategory" Type="int" Nullable="false" />
+    <Property Name="ProductImage" Type="varchar" MaxLength="50" Nullable="false" />
   </EntityType>
   <EntityType Name="Roles">
     <Key>
