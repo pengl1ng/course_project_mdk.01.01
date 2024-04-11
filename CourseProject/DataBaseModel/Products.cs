@@ -17,6 +17,7 @@ namespace CourseProject.DataBaseModel
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Products()
         {
+            this.Cart_Products = new HashSet<Cart_Products>();
             this.Order_Product = new HashSet<Order_Product>();
         }
     
@@ -28,6 +29,8 @@ namespace CourseProject.DataBaseModel
         public int ProductCategory { get; set; }
         public string ProductImage { get; set; }
     
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Cart_Products> Cart_Products { get; set; }
         public virtual Categories Categories { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Order_Product> Order_Product { get; set; }

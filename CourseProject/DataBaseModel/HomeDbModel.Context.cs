@@ -25,6 +25,8 @@ namespace CourseProject.DataBaseModel
             throw new UnintentionalCodeFirstException();
         }
     
+        public virtual DbSet<Cart> Cart { get; set; }
+        public virtual DbSet<Cart_Products> Cart_Products { get; set; }
         public virtual DbSet<Categories> Categories { get; set; }
         public virtual DbSet<Order_Product> Order_Product { get; set; }
         public virtual DbSet<Orders> Orders { get; set; }

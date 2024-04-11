@@ -12,23 +12,19 @@ namespace CourseProject.DataBaseModel
     using System;
     using System.Collections.Generic;
     
-    public partial class Orders
+    public partial class Cart
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Orders()
+        public Cart()
         {
-            this.Order_Product = new HashSet<Order_Product>();
+            this.Cart_Products = new HashSet<Cart_Products>();
         }
     
-        public int OrderId { get; set; }
-        public int OrderClient { get; set; }
-        public int OrderStatus { get; set; }
-        public System.DateTime OrderCreateDate { get; set; }
-        public int OrderPrice { get; set; }
+        public int CartId { get; set; }
+        public int ClientId { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Order_Product> Order_Product { get; set; }
-        public virtual OrderStatuses OrderStatuses { get; set; }
+        public virtual ICollection<Cart_Products> Cart_Products { get; set; }
         public virtual Users Users { get; set; }
     }
 }

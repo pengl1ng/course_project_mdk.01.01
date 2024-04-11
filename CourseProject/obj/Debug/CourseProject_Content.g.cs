@@ -8,8 +8,6 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("databasemodel/dbmodel.context.tt")]
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("databasemodel/dbmodel.tt")]
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("databasemodel/homedbmodel.context.tt")]
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("databasemodel/homedbmodel.tt")]
 

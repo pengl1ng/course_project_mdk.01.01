@@ -72,23 +72,14 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="DataBaseModel\Categories.cs">
+    <Compile Include="DataBaseModel\Cart.cs">
       <DependentUpon>HomeDbModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="DataBaseModel\DbModel.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>DbModel.Context.tt</DependentUpon>
+    <Compile Include="DataBaseModel\Cart_Products.cs">
+      <DependentUpon>HomeDbModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="DataBaseModel\DbModel.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>DbModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DataBaseModel\DbModel.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>DbModel.edmx</DependentUpon>
+    <Compile Include="DataBaseModel\Categories.cs">
+      <DependentUpon>HomeDbModel.tt</DependentUpon>
     </Compile>
     <Compile Include="DataBaseModel\HomeDbModel.Context.cs">
       <AutoGen>True</AutoGen>
@@ -161,13 +152,6 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EntityDeploy Include="DataBaseModel\DbModel.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>DbModel.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <None Include="DataBaseModel\DbModel.edmx.diagram">
-      <DependentUpon>DbModel.edmx</DependentUpon>
-    </None>
     <EntityDeploy Include="DataBaseModel\HomeDbModel.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>HomeDbModel.Designer.cs</LastGenOutput>
@@ -185,16 +169,20 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="DataBaseModel\DbModel.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>DbModel.Context.cs</LastGenOutput>
-      <DependentUpon>DbModel.edmx</DependentUpon>
-    </Content>
-    <Content Include="DataBaseModel\DbModel.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>DbModel.edmx</DependentUpon>
-      <LastGenOutput>DbModel.cs</LastGenOutput>
-    </Content>
+    <Resource Include="Images\dexpB450MHDVDX.jpg" />
+    <Resource Include="Images\gigabyteB650MGAMINGXAX.png" />
+    <Resource Include="Images\i312100.jpg" />
+    <Resource Include="Images\i711700F.jpg" />
+    <Resource Include="Images\msiPROB760MPDDR4.jpg" />
+    <Resource Include="Images\msiPROH510MB.jpg" />
+    <Resource Include="Images\ryzen33200G.jpg" />
+    <Resource Include="Images\ryzen53700X.png" />
+    <Resource Include="Images\cart.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
     <Content Include="DataBaseModel\HomeDbModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>HomeDbModel.edmx</DependentUpon>
@@ -205,11 +193,6 @@
       <DependentUpon>HomeDbModel.edmx</DependentUpon>
       <LastGenOutput>HomeDbModel.cs</LastGenOutput>
     </Content>
-    <Resource Include="Images\cart.png" />
   </ItemGroup>
-  <ItemGroup>
-    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
-  </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

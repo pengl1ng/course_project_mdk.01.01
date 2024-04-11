@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CourseProject.Helpers;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -27,7 +28,26 @@ namespace CourseProject.Pages
 
         private void btnAuthorize_Click(object sender, RoutedEventArgs e)
         {
+            if (TBoxEmail.Text != "" && PassBox.Password != "")
+            {
+                try
+                {
+                    var user = AppHelper.DbConnect.Users.FirstOrDefault(x => x.UserEMail == TBoxEmail.Text && x.UserPassword == PassBox.Password);
 
+                    if (user != null)
+                    {
+                        AppHelper.MainFrame.Navigate(new MainPage(user));
+                    }
+                    else
+                    {
+                        MessageBox.Show("Данного пользователя не существует", "Ошибка авторизации", MessageBoxButton.OK, MessageBoxImage.Warning);
+                    }
+                }
+                catch (Exception ex)
+                { 
+                
+                }
+            }
         }
 
         private void btnRegistration_Click(object sender, RoutedEventArgs e)

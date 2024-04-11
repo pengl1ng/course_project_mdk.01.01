@@ -5,6 +5,22 @@
     <!-- SSDL content -->
     <edmx:StorageModels>
       <Schema Namespace="Хранилище HomeDbModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Cart">
+          <Key>
+            <PropertyRef Name="CartId" />
+          </Key>
+          <Property Name="CartId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ClientId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Cart_Products">
+          <Key>
+            <PropertyRef Name="Cart_Product_Id" />
+          </Key>
+          <Property Name="Cart_Product_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CartId" Type="int" Nullable="false" />
+          <Property Name="ProductId" Type="int" Nullable="false" />
+          <Property Name="ProductAmountInCart" Type="int" Nullable="false" />
+        </EntityType>
         <EntityType Name="Categories">
           <Key>
             <PropertyRef Name="CategoryId" />
@@ -18,7 +34,7 @@
           </Key>
           <Property Name="Order_Product_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="OrderId" Type="int" Nullable="false" />
-          <Property Name="ProductId" Type="int" />
+          <Property Name="ProductId" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="Orders">
           <Key>
@@ -26,8 +42,9 @@
           </Key>
           <Property Name="OrderId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="OrderClient" Type="int" Nullable="false" />
-          <Property Name="OrderStatus" Type="int" />
-          <Property Name="OrderCreateDate" Type="date" />
+          <Property Name="OrderStatus" Type="int" Nullable="false" />
+          <Property Name="OrderCreateDate" Type="date" Nullable="false" />
+          <Property Name="OrderPrice" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="OrderStatuses">
           <Key>
@@ -66,7 +83,44 @@
           <Property Name="UserEMail" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="UserPassword" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="UserRole" Type="int" Nullable="false" />
+          <Property Name="UserLogin" Type="varchar" MaxLength="50" />
         </EntityType>
+        <Association Name="FK_Cart_Products_Cart">
+          <End Role="Cart" Type="Self.Cart" Multiplicity="1" />
+          <End Role="Cart_Products" Type="Self.Cart_Products" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cart">
+              <PropertyRef Name="CartId" />
+            </Principal>
+            <Dependent Role="Cart_Products">
+              <PropertyRef Name="CartId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Cart_Products_Products">
+          <End Role="Products" Type="Self.Products" Multiplicity="1" />
+          <End Role="Cart_Products" Type="Self.Cart_Products" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Products">
+              <PropertyRef Name="ProductId" />
+            </Principal>
+            <Dependent Role="Cart_Products">
+              <PropertyRef Name="ProductId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Cart_Users1">
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="Cart" Type="Self.Cart" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="Cart">
+              <PropertyRef Name="ClientId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Order_Product_Orders">
           <End Role="Orders" Type="Self.Orders" Multiplicity="1" />
           <End Role="Order_Product" Type="Self.Order_Product" Multiplicity="*" />
@@ -80,7 +134,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Order_Product_Products">
-          <End Role="Products" Type="Self.Products" Multiplicity="0..1" />
+          <End Role="Products" Type="Self.Products" Multiplicity="1" />
           <End Role="Order_Product" Type="Self.Order_Product" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Products">
@@ -92,7 +146,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Orders_OrderStatuses">
-          <End Role="OrderStatuses" Type="Self.OrderStatuses" Multiplicity="0..1" />
+          <End Role="OrderStatuses" Type="Self.OrderStatuses" Multiplicity="1" />
           <End Role="Orders" Type="Self.Orders" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="OrderStatuses">
@@ -140,6 +194,8 @@
           </ReferentialConstraint>
         </Association>
         <EntityContainer Name="Хранилище HomeDbModelContainer">
+          <EntitySet Name="Cart" EntityType="Self.Cart" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Cart_Products" EntityType="Self.Cart_Products" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Categories" EntityType="Self.Categories" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Order_Product" EntityType="Self.Order_Product" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Orders" EntityType="Self.Orders" Schema="dbo" store:Type="Tables" />
@@ -147,6 +203,18 @@
           <EntitySet Name="Products" EntityType="Self.Products" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Roles" EntityType="Self.Roles" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Cart_Products_Cart" Association="Self.FK_Cart_Products_Cart">
+            <End Role="Cart" EntitySet="Cart" />
+            <End Role="Cart_Products" EntitySet="Cart_Products" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Cart_Products_Products" Association="Self.FK_Cart_Products_Products">
+            <End Role="Products" EntitySet="Products" />
+            <End Role="Cart_Products" EntitySet="Cart_Products" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Cart_Users1" Association="Self.FK_Cart_Users1">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Cart" EntitySet="Cart" />
+          </AssociationSet>
           <AssociationSet Name="FK_Order_Product_Orders" Association="Self.FK_Order_Product_Orders">
             <End Role="Orders" EntitySet="Orders" />
             <End Role="Order_Product" EntitySet="Order_Product" />
@@ -177,6 +245,26 @@
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="HomeDbModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Cart">
+          <Key>
+            <PropertyRef Name="CartId" />
+          </Key>
+          <Property Name="CartId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ClientId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Cart_Products" Relationship="Self.FK_Cart_Products_Cart" FromRole="Cart" ToRole="Cart_Products" />
+          <NavigationProperty Name="Users" Relationship="Self.FK_Cart_Users1" FromRole="Cart" ToRole="Users" />
+        </EntityType>
+        <EntityType Name="Cart_Products">
+          <Key>
+            <PropertyRef Name="Cart_Product_Id" />
+          </Key>
+          <Property Name="Cart_Product_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CartId" Type="Int32" Nullable="false" />
+          <Property Name="ProductId" Type="Int32" Nullable="false" />
+          <Property Name="ProductAmountInCart" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Cart" Relationship="Self.FK_Cart_Products_Cart" FromRole="Cart_Products" ToRole="Cart" />
+          <NavigationProperty Name="Products" Relationship="Self.FK_Cart_Products_Products" FromRole="Cart_Products" ToRole="Products" />
+        </EntityType>
         <EntityType Name="Categories">
           <Key>
             <PropertyRef Name="CategoryId" />
@@ -191,7 +279,7 @@
           </Key>
           <Property Name="Order_Product_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="OrderId" Type="Int32" Nullable="false" />
-          <Property Name="ProductId" Type="Int32" />
+          <Property Name="ProductId" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Orders" Relationship="Self.FK_Order_Product_Orders" FromRole="Order_Product" ToRole="Orders" />
           <NavigationProperty Name="Products" Relationship="Self.FK_Order_Product_Products" FromRole="Order_Product" ToRole="Products" />
         </EntityType>
@@ -201,8 +289,9 @@
           </Key>
           <Property Name="OrderId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="OrderClient" Type="Int32" Nullable="false" />
-          <Property Name="OrderStatus" Type="Int32" />
-          <Property Name="OrderCreateDate" Type="DateTime" Precision="0" />
+          <Property Name="OrderStatus" Type="Int32" Nullable="false" />
+          <Property Name="OrderCreateDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="OrderPrice" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Order_Product" Relationship="Self.FK_Order_Product_Orders" FromRole="Orders" ToRole="Order_Product" />
           <NavigationProperty Name="OrderStatuses" Relationship="Self.FK_Orders_OrderStatuses" FromRole="Orders" ToRole="OrderStatuses" />
           <NavigationProperty Name="Users" Relationship="Self.FK_Orders_Users" FromRole="Orders" ToRole="Users" />
@@ -226,6 +315,7 @@
           <Property Name="ProductAmount" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="ProductCategory" Type="Int32" Nullable="false" />
           <Property Name="ProductImage" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Cart_Products" Relationship="Self.FK_Cart_Products_Products" FromRole="Products" ToRole="Cart_Products" />
           <NavigationProperty Name="Categories" Relationship="Self.FK_Products_Categories" FromRole="Products" ToRole="Categories" />
           <NavigationProperty Name="Order_Product" Relationship="Self.FK_Order_Product_Products" FromRole="Products" ToRole="Order_Product" />
         </EntityType>
@@ -248,9 +338,47 @@
           <Property Name="UserEMail" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="UserPassword" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="UserRole" Type="Int32" Nullable="false" />
+          <Property Name="UserLogin" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Cart" Relationship="Self.FK_Cart_Users1" FromRole="Users" ToRole="Cart" />
           <NavigationProperty Name="Orders" Relationship="Self.FK_Orders_Users" FromRole="Users" ToRole="Orders" />
           <NavigationProperty Name="Roles" Relationship="Self.FK_Users_Roles" FromRole="Users" ToRole="Roles" />
         </EntityType>
+        <Association Name="FK_Cart_Products_Cart">
+          <End Role="Cart" Type="Self.Cart" Multiplicity="1" />
+          <End Role="Cart_Products" Type="Self.Cart_Products" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cart">
+              <PropertyRef Name="CartId" />
+            </Principal>
+            <Dependent Role="Cart_Products">
+              <PropertyRef Name="CartId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Cart_Users1">
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="Cart" Type="Self.Cart" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="Cart">
+              <PropertyRef Name="ClientId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Cart_Products_Products">
+          <End Role="Products" Type="Self.Products" Multiplicity="1" />
+          <End Role="Cart_Products" Type="Self.Cart_Products" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Products">
+              <PropertyRef Name="ProductId" />
+            </Principal>
+            <Dependent Role="Cart_Products">
+              <PropertyRef Name="ProductId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Products_Categories">
           <End Role="Categories" Type="Self.Categories" Multiplicity="1" />
           <End Role="Products" Type="Self.Products" Multiplicity="*" />
@@ -276,7 +404,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Order_Product_Products">
-          <End Role="Products" Type="Self.Products" Multiplicity="0..1" />
+          <End Role="Products" Type="Self.Products" Multiplicity="1" />
           <End Role="Order_Product" Type="Self.Order_Product" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Products">
@@ -288,7 +416,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Orders_OrderStatuses">
-          <End Role="OrderStatuses" Type="Self.OrderStatuses" Multiplicity="0..1" />
+          <End Role="OrderStatuses" Type="Self.OrderStatuses" Multiplicity="1" />
           <End Role="Orders" Type="Self.Orders" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="OrderStatuses">
@@ -324,6 +452,8 @@
           </ReferentialConstraint>
         </Association>
         <EntityContainer Name="HomeDbEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Cart" EntityType="Self.Cart" />
+          <EntitySet Name="Cart_Products" EntityType="Self.Cart_Products" />
           <EntitySet Name="Categories" EntityType="Self.Categories" />
           <EntitySet Name="Order_Product" EntityType="Self.Order_Product" />
           <EntitySet Name="Orders" EntityType="Self.Orders" />
@@ -331,6 +461,18 @@
           <EntitySet Name="Products" EntityType="Self.Products" />
           <EntitySet Name="Roles" EntityType="Self.Roles" />
           <EntitySet Name="Users" EntityType="Self.Users" />
+          <AssociationSet Name="FK_Cart_Products_Cart" Association="Self.FK_Cart_Products_Cart">
+            <End Role="Cart" EntitySet="Cart" />
+            <End Role="Cart_Products" EntitySet="Cart_Products" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Cart_Users1" Association="Self.FK_Cart_Users1">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Cart" EntitySet="Cart" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Cart_Products_Products" Association="Self.FK_Cart_Products_Products">
+            <End Role="Products" EntitySet="Products" />
+            <End Role="Cart_Products" EntitySet="Cart_Products" />
+          </AssociationSet>
           <AssociationSet Name="FK_Products_Categories" Association="Self.FK_Products_Categories">
             <End Role="Categories" EntitySet="Categories" />
             <End Role="Products" EntitySet="Products" />
@@ -362,6 +504,24 @@
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="Хранилище HomeDbModelContainer" CdmEntityContainer="HomeDbEntities">
+          <EntitySetMapping Name="Cart">
+            <EntityTypeMapping TypeName="HomeDbModel.Cart">
+              <MappingFragment StoreEntitySet="Cart">
+                <ScalarProperty Name="CartId" ColumnName="CartId" />
+                <ScalarProperty Name="ClientId" ColumnName="ClientId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Cart_Products">
+            <EntityTypeMapping TypeName="HomeDbModel.Cart_Products">
+              <MappingFragment StoreEntitySet="Cart_Products">
+                <ScalarProperty Name="Cart_Product_Id" ColumnName="Cart_Product_Id" />
+                <ScalarProperty Name="CartId" ColumnName="CartId" />
+                <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+                <ScalarProperty Name="ProductAmountInCart" ColumnName="ProductAmountInCart" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="Categories">
             <EntityTypeMapping TypeName="HomeDbModel.Categories">
               <MappingFragment StoreEntitySet="Categories">
@@ -386,6 +546,7 @@
                 <ScalarProperty Name="OrderClient" ColumnName="OrderClient" />
                 <ScalarProperty Name="OrderStatus" ColumnName="OrderStatus" />
                 <ScalarProperty Name="OrderCreateDate" ColumnName="OrderCreateDate" />
+                <ScalarProperty Name="OrderPrice" ColumnName="OrderPrice" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -428,6 +589,7 @@
                 <ScalarProperty Name="UserEMail" ColumnName="UserEMail" />
                 <ScalarProperty Name="UserPassword" ColumnName="UserPassword" />
                 <ScalarProperty Name="UserRole" ColumnName="UserRole" />
+                <ScalarProperty Name="UserLogin" ColumnName="UserLogin" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

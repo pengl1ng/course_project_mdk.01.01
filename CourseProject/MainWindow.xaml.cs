@@ -13,7 +13,7 @@ namespace CourseProject
         {
             InitializeComponent();
             AppHelper.MainFrame = _MainFrame;
-            AppHelper.MainFrame.Navigate(new MainPage());
+            AppHelper.MainFrame.Navigate(new AuthorizationPage());
         }
     }
 }

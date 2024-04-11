@@ -26,35 +26,59 @@
             <Button x:Name="btnCart" Click="btnCart_Click"
                     Style="{StaticResource CartButton}"/>
             <Grid Margin="50,5,5,5">
-                <Button x:Name="btnAuthorize" Content="Войти"
-                        Width="112" Height="30"
-                        Style="{StaticResource AuthButton}"
-                        Click="btnAuthorize_Click"/>
-                <TextBlock Text="{Binding UserName}"
-                           Style="{StaticResource UserNameTBlock}"
-                           Visibility="Collapsed"/>
+                <TextBlock Style="{StaticResource UserNameTBlock}"
+                           TextWrapping="Wrap">
+                    <TextBlock.Text>
+                        <MultiBinding StringFormat="{}{0} {1} {2}">
+                            <Binding Path="UserPatronimyc"/>
+                            <Binding Path="UserName"/>
+                            <Binding Path="UserSurname"/>
+                        </MultiBinding>
+                    </TextBlock.Text>
+                </TextBlock>
             </Grid>
         </StackPanel>
 
         <StackPanel Orientation="Vertical" Grid.Row="1" 
                     Style="{StaticResource StackPanelShop}">
+            <StackPanel Orientation="Vertical"
+                        Margin="5">
+                <TextBlock Text="Сортировка по категориям"/>
+                <ComboBox x:Name="cboxCategory"
+                          SelectionChanged="cboxCategory_SelectionChanged"/>
+            </StackPanel>
         </StackPanel>
 
         <ListView x:Name="lvProducts" Grid.Row="1"
-                  Grid.Column="1">
+                  Grid.Column="1"
+                  ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+                  HorizontalContentAlignment="Center">
+            <ListView.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <WrapPanel Orientation="Horizontal" HorizontalAlignment="Center"/>
+                </ItemsPanelTemplate>
+            </ListView.ItemsPanel>
             <ListView.ItemTemplate>
                 <DataTemplate>
-                    <StackPanel Orientation="Vertical">
-                        <Image>
-                            <Image.Source>
-                                <Binding Path="ProductImage"/>
-                            </Image.Source>
-                        </Image>
-                        <TextBlock Text="{Binding Path=ProductName}"/>
-                        <TextBlock Text="{Binding Path=ProductPrice}"/>
-                        <Button x:Name="btnAddToCart" Content="В корзину"
-                                Click="btnAddToCart_Click"/>
-                    </StackPanel>
+                    <Border BorderThickness="2" CornerRadius="5">
+                        <StackPanel Orientation="Vertical" Style="{StaticResource LVProductCard}">
+                            <Image Style="{StaticResource LViewProductImage}">
+                                <Image.Source>
+                                    <Binding Path="ProductImage">
+                                        <Binding.TargetNullValue>
+                                            <ImageSource>/Images/cart.png</ImageSource>
+                                        </Binding.TargetNullValue>
+                                    </Binding>
+                                </Image.Source>
+                            </Image>
+                            <TextBlock Text="{Binding Path=ProductName}"/>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Text="{Binding Path=ProductPrice}"/>
+                                <Button x:Name="btnAddToCart" Content="В корзину"
+                                        Click="btnAddToCart_Click"/>
+                            </StackPanel>
+                        </StackPanel>
+                    </Border>
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>

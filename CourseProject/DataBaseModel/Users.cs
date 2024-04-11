@@ -17,6 +17,7 @@ namespace CourseProject.DataBaseModel
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Users()
         {
+            this.Cart = new HashSet<Cart>();
             this.Orders = new HashSet<Orders>();
         }
     
@@ -27,7 +28,10 @@ namespace CourseProject.DataBaseModel
         public string UserEMail { get; set; }
         public string UserPassword { get; set; }
         public int UserRole { get; set; }
+        public string UserLogin { get; set; }
     
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Cart> Cart { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Orders> Orders { get; set; }
         public virtual Roles Roles { get; set; }

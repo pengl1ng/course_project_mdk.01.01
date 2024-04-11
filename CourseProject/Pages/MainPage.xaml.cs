@@ -1,4 +1,5 @@
-﻿using CourseProject.Helpers;
+﻿using CourseProject.DataBaseModel;
+using CourseProject.Helpers;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -22,10 +23,25 @@ namespace CourseProject.Pages
     /// </summary>
     public partial class MainPage : Page
     {
-        public MainPage()
+        List<Products> origin = AppHelper.DbConnect.Products.ToList();
+        List<Products> current = new List<Products>();
+        public MainPage(Users user)
         {
             InitializeComponent();
-            lvProducts.DataContext = AppHelper.DbConnect.Products.ToList();
+
+            cboxCategory.ItemsSource = AppHelper.DbConnect.Categories.ToList();
+            cboxCategory.SelectedValue = "CategoryId";
+            cboxCategory.DisplayMemberPath = "CategoryName";
+
+            current = origin;
+            lvProducts.ItemsSource = current;
+            DataContext = user;
+        }
+
+        private void UpdateFilters()
+        {
+            if (cboxCategory.SelectedIndex != -1) current = origin.Where(x => x.ProductCategory == cboxCategory.SelectedIndex + 1).ToList();
+            lvProducts.ItemsSource = current;
         }
 
         private void btnCart_Click(object sender, RoutedEventArgs e)
@@ -41,6 +57,11 @@ namespace CourseProject.Pages
         private void btnAddToCart_Click(object sender, RoutedEventArgs e)
         {
 
+        }
+
+        private void cboxCategory_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            UpdateFilters();
         }
     }
 }
