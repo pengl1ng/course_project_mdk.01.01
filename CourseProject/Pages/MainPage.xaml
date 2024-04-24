@@ -82,12 +82,11 @@
                                            Style="{StaticResource CardProductName}"/>
                             </StackPanel>
 
-                            <StackPanel Orientation="Horizontal" Grid.Row="1"
-                                    Style="{StaticResource ProductCardBottom}">
-                                <TextBlock Text="{Binding Path=ProductPrice}"/>
+                            <DockPanel Grid.Row="1">
+                                <TextBlock Text="{Binding Path=ProductPrice}" DockPanel.Dock="Left"/>
                                 <Button x:Name="btnAddToCart" Content="В корзину"
-                                        Click="btnAddToCart_Click"/>
-                            </StackPanel>
+                                        Click="btnAddToCart_Click" DockPanel.Dock="Right"/>
+                            </DockPanel>
                         </Grid>
                     </Border>
                 </DataTemplate>

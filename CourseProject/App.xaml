@@ -5,19 +5,7 @@
              StartupUri="MainWindow.xaml">
     <Application.Resources>
         <FontFamily x:Key="Roboto">pack://application:,,,/Fonts/#Roboto</FontFamily>
-        
-        <Style TargetType="Window">
-            <Setter Property="FontFamily" Value="{StaticResource Roboto}"/>
-        </Style>
 
-        <Style TargetType="TextBlock">
-            <Setter Property="FontFamily" Value="{StaticResource Roboto}"/>
-        </Style>
-
-        <Style TargetType="TextBox">
-            <Setter Property="FontFamily" Value="{StaticResource Roboto}"/>
-        </Style>
-        
         <Style x:Key="CustomWindowStyle" TargetType="Window">
             <Setter Property="WindowChrome.WindowChrome">
                 <Setter.Value>
@@ -30,6 +18,7 @@
                 </Setter.Value>
             </Setter>
 
+            <Setter Property="FontFamily" Value="{StaticResource Roboto}"/>
             <Setter Property="BorderBrush" Value="#E79E85"/>
             <Setter Property="Background" Value="#F2E9D0"/>
 
@@ -104,6 +93,7 @@
             <Setter Property="VerticalAlignment" Value="Center"/>
             <Setter Property="Foreground" Value="#BB5A5A"/>
             <Setter Property="Margin" Value="233,5,5,5"/>
+            <Setter Property="FontFamily" Value="{StaticResource Roboto}"/>
         </Style>
 
         <Style x:Key="SearchBar" TargetType="TextBox">
@@ -116,6 +106,7 @@
             <Setter Property="FontWeight" Value="Light"/>
             <Setter Property="VerticalContentAlignment" Value="Center"/>
             <Setter Property="FontSize" Value="15"/>
+            <Setter Property="FontFamily" Value="{StaticResource Roboto}"/>
             <Style.Resources>
                 <Style TargetType="Border">
                     <Setter Property="CornerRadius" Value="5"/>
@@ -124,6 +115,7 @@
         </Style>
 
         <Style x:Key="CartButton" TargetType="Button">
+            <Setter Property="FontFamily" Value="{StaticResource Roboto}"/>
             <Setter Property="Background" Value="Transparent"/>
             <Setter Property="Content">
                 <Setter.Value>
@@ -147,6 +139,7 @@
             <Setter Property="FontWeight" Value="Light"/>
             <Setter Property="Foreground" Value="#FFFFFF"/>
             <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="FontFamily" Value="{StaticResource Roboto}"/>
         </Style>
 
         <Style x:Key="UserNameTBlock" TargetType="TextBlock">
@@ -155,6 +148,7 @@
             <Setter Property="FontWeight" Value="Light"/>
             <Setter Property="VerticalAlignment" Value="Center"/>
             <Setter Property="TextAlignment" Value="Center"/>
+            <Setter Property="FontFamily" Value="{StaticResource Roboto}"/>
         </Style>
 
         <Style x:Key="AuthorizationPageButtons" TargetType="Button">
@@ -167,7 +161,7 @@
             <Setter Property="FontSize" Value="12"/>
             <Setter Property="BorderThickness" Value="1"/>
             <Setter Property="Margin" Value="10"/>
-            
+            <Setter Property="FontFamily" Value="{StaticResource Roboto}"/>
             <Style.Resources>
                 <Style TargetType="Border">
                     <Setter Property="CornerRadius" Value="10"/>
@@ -190,6 +184,7 @@
             <Setter Property="FontSize" Value="15"/>
             <Setter Property="Foreground" Value="#F2E9D0"/>
             <Setter Property="FontWeight" Value="Light"/>
+            <Setter Property="FontFamily" Value="{StaticResource Roboto}"/>
         </Style>
 
         <Style x:Key="TBoxAuthFields" TargetType="TextBox">
@@ -203,6 +198,7 @@
             <Setter Property="BorderThickness" Value="1"/>
             <Setter Property="VerticalAlignment" Value="Center"/>
             <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="FontFamily" Value="{StaticResource Roboto}"/>
             <Setter Property="Padding" Value="10,0,0,0"/>
             <Style.Resources>
                 <Style TargetType="Border">
@@ -223,6 +219,7 @@
             <Setter Property="VerticalAlignment" Value="Center"/>
             <Setter Property="VerticalContentAlignment" Value="Center"/>
             <Setter Property="Padding" Value="10,0,0,0"/>
+            <Setter Property="FontFamily" Value="{StaticResource Roboto}"/>
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="PasswordBox">
@@ -247,6 +244,7 @@
             <Setter Property="TextAlignment" Value="Center"/>
             <Setter Property="FontWeight" Value="Light"/>
             <Setter Property="FontSize" Value="15"/>
+            <Setter Property="FontFamily" Value="{StaticResource Roboto}"/>
         </Style>
 
         <Style x:Key="SPanelAuth" TargetType="StackPanel">
@@ -272,6 +270,7 @@
             <Setter Property="FontSize" Value="15"/>
             <Setter Property="FontWeight" Value="Medium"/>
             <Setter Property="TextWrapping" Value="Wrap"/>
+            <Setter Property="FontFamily" Value="{StaticResource Roboto}"/>
         </Style>
 
         <Style x:Key="ProductCardBottom" TargetType="StackPanel">

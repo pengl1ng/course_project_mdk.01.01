@@ -166,6 +166,13 @@
     <None Include="DataBaseModel\HomeDbModel.edmx.diagram">
       <DependentUpon>HomeDbModel.edmx</DependentUpon>
     </None>
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
     <Resource Include="Fonts\Roboto-Black.ttf" />
     <Resource Include="Fonts\Roboto-BlackItalic.ttf" />
     <Resource Include="Fonts\Roboto-Bold.ttf" />
@@ -178,11 +185,6 @@
     <Resource Include="Fonts\Roboto-Regular.ttf" />
     <Resource Include="Fonts\Roboto-Thin.ttf" />
     <Resource Include="Fonts\Roboto-ThinItalic.ttf" />
-    <None Include="packages.config" />
-    <None Include="Properties\Settings.settings">
-      <Generator>SettingsSingleFileGenerator</Generator>
-      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
-    </None>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
