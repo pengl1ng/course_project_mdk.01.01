@@ -28,11 +28,11 @@ namespace CourseProject.Pages
 
         private void btnAuthorize_Click(object sender, RoutedEventArgs e)
         {
-            if (TBoxEmail.Text != "" && PassBox.Password != "")
+            if (TBoxLogin.Text != "" && PassBox.Password != "")
             {
                 try
                 {
-                    var user = AppHelper.DbConnect.Users.FirstOrDefault(x => x.UserEMail == TBoxEmail.Text && x.UserPassword == PassBox.Password);
+                    var user = AppHelper.DbConnect.Users.FirstOrDefault(x => x.UserLogin == TBoxLogin.Text && x.UserPassword == PassBox.Password);
 
                     if (user != null)
                     {
@@ -44,15 +44,15 @@ namespace CourseProject.Pages
                     }
                 }
                 catch (Exception ex)
-                { 
-                
+                {
+                    MessageBox.Show(ex.Message);
                 }
             }
         }
 
         private void btnRegistration_Click(object sender, RoutedEventArgs e)
         {
-
+            AppHelper.MainFrame.Navigate(new RegistartionPage());
         }
     }
 }

@@ -79,14 +79,14 @@
     <EntitySetMapping Name="Users">
       <EntityTypeMapping TypeName="HomeDbModel.Users">
         <MappingFragment StoreEntitySet="Users">
-          <ScalarProperty Name="UserId" ColumnName="UserId" />
-          <ScalarProperty Name="UserName" ColumnName="UserName" />
-          <ScalarProperty Name="UserSurname" ColumnName="UserSurname" />
-          <ScalarProperty Name="UserPatronimyc" ColumnName="UserPatronimyc" />
-          <ScalarProperty Name="UserEMail" ColumnName="UserEMail" />
-          <ScalarProperty Name="UserPassword" ColumnName="UserPassword" />
           <ScalarProperty Name="UserRole" ColumnName="UserRole" />
+          <ScalarProperty Name="UserPassword" ColumnName="UserPassword" />
           <ScalarProperty Name="UserLogin" ColumnName="UserLogin" />
+          <ScalarProperty Name="UserEMail" ColumnName="UserEMail" />
+          <ScalarProperty Name="UserPatronimyc" ColumnName="UserPatronimyc" />
+          <ScalarProperty Name="UserSurname" ColumnName="UserSurname" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

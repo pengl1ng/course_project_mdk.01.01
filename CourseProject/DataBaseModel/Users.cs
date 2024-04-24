@@ -26,9 +26,9 @@ namespace CourseProject.DataBaseModel
         public string UserSurname { get; set; }
         public string UserPatronimyc { get; set; }
         public string UserEMail { get; set; }
+        public string UserLogin { get; set; }
         public string UserPassword { get; set; }
         public int UserRole { get; set; }
-        public string UserLogin { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Cart> Cart { get; set; }

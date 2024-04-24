@@ -4,6 +4,20 @@
              xmlns:local="clr-namespace:CourseProject"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
+        <FontFamily x:Key="Roboto">pack://application:,,,/Fonts/#Roboto</FontFamily>
+        
+        <Style TargetType="Window">
+            <Setter Property="FontFamily" Value="{StaticResource Roboto}"/>
+        </Style>
+
+        <Style TargetType="TextBlock">
+            <Setter Property="FontFamily" Value="{StaticResource Roboto}"/>
+        </Style>
+
+        <Style TargetType="TextBox">
+            <Setter Property="FontFamily" Value="{StaticResource Roboto}"/>
+        </Style>
+        
         <Style x:Key="CustomWindowStyle" TargetType="Window">
             <Setter Property="WindowChrome.WindowChrome">
                 <Setter.Value>
@@ -244,12 +258,31 @@
 
         <Style x:Key="LViewProductImage" TargetType="Image">
             <Setter Property="Width" Value="150"/>
-            <Setter Property="Height" Value="100"/>
         </Style>
 
-        <Style x:Key="LVProductCard" TargetType="StackPanel">
-            <Setter Property="Width" Value="170"/>
+        <Style x:Key="LVProductCard" TargetType="Grid">
+            <Setter Property="Width" Value="180"/>
             <Setter Property="Height" Value="240"/>
+            <Setter Property="Margin" Value="5"/>
+        </Style>
+
+        <Style x:Key="CardProductName" TargetType="TextBlock">
+            <Setter Property="Margin" Value="0,10,0,0"/>
+            <Setter Property="Foreground" Value="#BB5A5A"/>
+            <Setter Property="FontSize" Value="15"/>
+            <Setter Property="FontWeight" Value="Medium"/>
+            <Setter Property="TextWrapping" Value="Wrap"/>
+        </Style>
+
+        <Style x:Key="ProductCardBottom" TargetType="StackPanel">
+            
+        </Style>
+
+        <Style x:Key="ProductCardBorder" TargetType="Border">
+            <Setter Property="BorderThickness" Value="3"/>
+            <Setter Property="BorderBrush" Value="#E79E85"/>
+            <Setter Property="CornerRadius" Value="5"/>
+            <Setter Property="Background" Value="#EACEB4"/>
         </Style>
     </Application.Resources>
 </Application>

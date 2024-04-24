@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="Хранилище HomeDbModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="Хранилище HomeDbModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Cart">
           <Key>
             <PropertyRef Name="CartId" />
@@ -81,9 +81,9 @@
           <Property Name="UserSurname" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="UserPatronimyc" Type="varchar" MaxLength="50" />
           <Property Name="UserEMail" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="UserLogin" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="UserPassword" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="UserRole" Type="int" Nullable="false" />
-          <Property Name="UserLogin" Type="varchar" MaxLength="50" />
         </EntityType>
         <Association Name="FK_Cart_Products_Cart">
           <End Role="Cart" Type="Self.Cart" Multiplicity="1" />
@@ -240,8 +240,7 @@
             <End Role="Users" EntitySet="Users" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="HomeDbModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -252,7 +251,7 @@
           <Property Name="CartId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="ClientId" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Cart_Products" Relationship="Self.FK_Cart_Products_Cart" FromRole="Cart" ToRole="Cart_Products" />
-          <NavigationProperty Name="Users" Relationship="Self.FK_Cart_Users1" FromRole="Cart" ToRole="Users" />
+          <NavigationProperty Name="Users" Relationship="HomeDbModel.FK_Cart_Users1" FromRole="Cart" ToRole="Users" />
         </EntityType>
         <EntityType Name="Cart_Products">
           <Key>
@@ -294,7 +293,7 @@
           <Property Name="OrderPrice" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Order_Product" Relationship="Self.FK_Order_Product_Orders" FromRole="Orders" ToRole="Order_Product" />
           <NavigationProperty Name="OrderStatuses" Relationship="Self.FK_Orders_OrderStatuses" FromRole="Orders" ToRole="OrderStatuses" />
-          <NavigationProperty Name="Users" Relationship="Self.FK_Orders_Users" FromRole="Orders" ToRole="Users" />
+          <NavigationProperty Name="Users" Relationship="HomeDbModel.FK_Orders_Users" FromRole="Orders" ToRole="Users" />
         </EntityType>
         <EntityType Name="OrderStatuses">
           <Key>
@@ -325,23 +324,7 @@
           </Key>
           <Property Name="RoleId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="RoleName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <NavigationProperty Name="Users" Relationship="Self.FK_Users_Roles" FromRole="Roles" ToRole="Users" />
-        </EntityType>
-        <EntityType Name="Users">
-          <Key>
-            <PropertyRef Name="UserId" />
-          </Key>
-          <Property Name="UserId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="UserName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="UserSurname" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="UserPatronimyc" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="UserEMail" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="UserPassword" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="UserRole" Type="Int32" Nullable="false" />
-          <Property Name="UserLogin" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="Cart" Relationship="Self.FK_Cart_Users1" FromRole="Users" ToRole="Cart" />
-          <NavigationProperty Name="Orders" Relationship="Self.FK_Orders_Users" FromRole="Users" ToRole="Orders" />
-          <NavigationProperty Name="Roles" Relationship="Self.FK_Users_Roles" FromRole="Users" ToRole="Roles" />
+          <NavigationProperty Name="Users" Relationship="HomeDbModel.FK_Users_Roles" FromRole="Roles" ToRole="Users" />
         </EntityType>
         <Association Name="FK_Cart_Products_Cart">
           <End Role="Cart" Type="Self.Cart" Multiplicity="1" />
@@ -352,18 +335,6 @@
             </Principal>
             <Dependent Role="Cart_Products">
               <PropertyRef Name="CartId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Cart_Users1">
-          <End Role="Users" Type="Self.Users" Multiplicity="1" />
-          <End Role="Cart" Type="Self.Cart" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Users">
-              <PropertyRef Name="UserId" />
-            </Principal>
-            <Dependent Role="Cart">
-              <PropertyRef Name="ClientId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -427,30 +398,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Orders_Users">
-          <End Role="Users" Type="Self.Users" Multiplicity="1" />
-          <End Role="Orders" Type="Self.Orders" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Users">
-              <PropertyRef Name="UserId" />
-            </Principal>
-            <Dependent Role="Orders">
-              <PropertyRef Name="OrderClient" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Users_Roles">
-          <End Role="Roles" Type="Self.Roles" Multiplicity="1" />
-          <End Role="Users" Type="Self.Users" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Roles">
-              <PropertyRef Name="RoleId" />
-            </Principal>
-            <Dependent Role="Users">
-              <PropertyRef Name="UserRole" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <EntityContainer Name="HomeDbEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Cart" EntityType="Self.Cart" />
           <EntitySet Name="Cart_Products" EntityType="Self.Cart_Products" />
@@ -460,14 +407,9 @@
           <EntitySet Name="OrderStatuses" EntityType="Self.OrderStatuses" />
           <EntitySet Name="Products" EntityType="Self.Products" />
           <EntitySet Name="Roles" EntityType="Self.Roles" />
-          <EntitySet Name="Users" EntityType="Self.Users" />
           <AssociationSet Name="FK_Cart_Products_Cart" Association="Self.FK_Cart_Products_Cart">
             <End Role="Cart" EntitySet="Cart" />
             <End Role="Cart_Products" EntitySet="Cart_Products" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Cart_Users1" Association="Self.FK_Cart_Users1">
-            <End Role="Users" EntitySet="Users" />
-            <End Role="Cart" EntitySet="Cart" />
           </AssociationSet>
           <AssociationSet Name="FK_Cart_Products_Products" Association="Self.FK_Cart_Products_Products">
             <End Role="Products" EntitySet="Products" />
@@ -489,15 +431,72 @@
             <End Role="OrderStatuses" EntitySet="OrderStatuses" />
             <End Role="Orders" EntitySet="Orders" />
           </AssociationSet>
-          <AssociationSet Name="FK_Orders_Users" Association="Self.FK_Orders_Users">
+          <EntitySet Name="Users" EntityType="HomeDbModel.Users" />
+          <AssociationSet Name="FK_Cart_Users1" Association="HomeDbModel.FK_Cart_Users1">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Cart" EntitySet="Cart" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Orders_Users" Association="HomeDbModel.FK_Orders_Users">
             <End Role="Users" EntitySet="Users" />
             <End Role="Orders" EntitySet="Orders" />
           </AssociationSet>
-          <AssociationSet Name="FK_Users_Roles" Association="Self.FK_Users_Roles">
+          <AssociationSet Name="FK_Users_Roles" Association="HomeDbModel.FK_Users_Roles">
             <End Role="Roles" EntitySet="Roles" />
             <End Role="Users" EntitySet="Users" />
           </AssociationSet>
-        </EntityContainer>
+          </EntityContainer>
+        <EntityType Name="Users">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="UserId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="UserSurname" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="UserPatronimyc" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="UserEMail" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="UserLogin" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="UserPassword" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="UserRole" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Cart" Relationship="HomeDbModel.FK_Cart_Users1" FromRole="Users" ToRole="Cart" />
+          <NavigationProperty Name="Orders" Relationship="HomeDbModel.FK_Orders_Users" FromRole="Users" ToRole="Orders" />
+          <NavigationProperty Name="Roles" Relationship="HomeDbModel.FK_Users_Roles" FromRole="Users" ToRole="Roles" />
+        </EntityType>
+        <Association Name="FK_Cart_Users1">
+          <End Type="HomeDbModel.Users" Role="Users" Multiplicity="1" />
+          <End Type="HomeDbModel.Cart" Role="Cart" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="Cart">
+              <PropertyRef Name="ClientId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Orders_Users">
+          <End Type="HomeDbModel.Users" Role="Users" Multiplicity="1" />
+          <End Type="HomeDbModel.Orders" Role="Orders" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="Orders">
+              <PropertyRef Name="OrderClient" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Users_Roles">
+          <End Type="HomeDbModel.Roles" Role="Roles" Multiplicity="1" />
+          <End Type="HomeDbModel.Users" Role="Users" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Roles">
+              <PropertyRef Name="RoleId" />
+            </Principal>
+            <Dependent Role="Users">
+              <PropertyRef Name="UserRole" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -582,14 +581,14 @@
           <EntitySetMapping Name="Users">
             <EntityTypeMapping TypeName="HomeDbModel.Users">
               <MappingFragment StoreEntitySet="Users">
-                <ScalarProperty Name="UserId" ColumnName="UserId" />
-                <ScalarProperty Name="UserName" ColumnName="UserName" />
-                <ScalarProperty Name="UserSurname" ColumnName="UserSurname" />
-                <ScalarProperty Name="UserPatronimyc" ColumnName="UserPatronimyc" />
-                <ScalarProperty Name="UserEMail" ColumnName="UserEMail" />
-                <ScalarProperty Name="UserPassword" ColumnName="UserPassword" />
                 <ScalarProperty Name="UserRole" ColumnName="UserRole" />
+                <ScalarProperty Name="UserPassword" ColumnName="UserPassword" />
                 <ScalarProperty Name="UserLogin" ColumnName="UserLogin" />
+                <ScalarProperty Name="UserEMail" ColumnName="UserEMail" />
+                <ScalarProperty Name="UserPatronimyc" ColumnName="UserPatronimyc" />
+                <ScalarProperty Name="UserSurname" ColumnName="UserSurname" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

@@ -9,25 +9,32 @@
       Title="AuthorizationPage">
 
     <Grid>
-        <StackPanel Style="{StaticResource SPanelAuth}">
-            <TextBlock Text="Авторизация" Margin="10"
-                       Style="{StaticResource TBlockPageName}"/>
-            <StackPanel Orientation="Horizontal"
+        <Border VerticalAlignment="Center"
+                HorizontalAlignment="Center"
+                Style="{StaticResource ProductCardBorder}">
+            <Grid>
+                <StackPanel Style="{StaticResource SPanelAuth}">
+                    <TextBlock Text="Вход" Margin="10"
+                               Style="{StaticResource TBlockPageName}"/>
+                    <StackPanel Orientation="Horizontal"
                         Margin="10">
-                <TextBlock Text="Почта" Style="{StaticResource TBlockAuthData}"/>
-                <TextBox x:Name="TBoxEmail" Style="{StaticResource TBoxAuthFields}"/>
-            </StackPanel>
-            <StackPanel Orientation="Horizontal"
-                        Margin="10">
-                <TextBlock Text="Пароль" Style="{StaticResource TBlockAuthData}"/>
-                <PasswordBox x:Name="PassBox" Style="{StaticResource PBoxAuthField}"/>
-            </StackPanel>
-            <Button x:Name="btnAuthorize" Content="Войти"
-                    Click="btnAuthorize_Click"
-                    Style="{StaticResource AuthorizationPageButtons}"/>
-            <Button x:Name="btnRegistration" Content="Зарегистрироваться"
-                    Click="btnRegistration_Click"
-                    Style="{StaticResource AuthorizationPageButtons}"/>
-        </StackPanel>
+                        <TextBlock Text="Логин" Style="{StaticResource TBlockAuthData}"/>
+                        <TextBox x:Name="TBoxLogin" Style="{StaticResource TBoxAuthFields}"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" Margin="10">
+                        <TextBlock Text="Пароль" Style="{StaticResource TBlockAuthData}"/>
+                        <PasswordBox x:Name="PassBox" Style="{StaticResource PBoxAuthField}"/>
+                    </StackPanel>
+                    <Button x:Name="btnAuthorize" Content="Войти"
+                            Click="btnAuthorize_Click"
+                            Style="{StaticResource AuthorizationPageButtons}"/>
+                    <TextBlock Text="Не зарегистрированы?" Style="{StaticResource TBlockPageName}"
+                               FontSize="10"/>
+                    <Button x:Name="btnRegistration" Content="Регистрация"
+                            Click="btnRegistration_Click"
+                            Style="{StaticResource AuthorizationPageButtons}"/>
+                </StackPanel>
+            </Grid>
+        </Border>
     </Grid>
 </Page>

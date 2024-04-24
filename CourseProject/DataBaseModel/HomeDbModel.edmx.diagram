@@ -13,17 +13,17 @@
         <EntityTypeShape EntityType="HomeDbModel.OrderStatuses" Width="1.5" PointX="3" PointY="7.375" IsExpanded="true" />
         <EntityTypeShape EntityType="HomeDbModel.Products" Width="1.5" PointX="5.25" PointY="9.75" IsExpanded="true" />
         <EntityTypeShape EntityType="HomeDbModel.Roles" Width="1.5" PointX="0.75" PointY="4.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="HomeDbModel.Users" Width="1.5" PointX="3" PointY="3.5" IsExpanded="true" />
         <AssociationConnector Association="HomeDbModel.FK_Cart_Products_Cart" ManuallyRouted="false" />
-        <AssociationConnector Association="HomeDbModel.FK_Cart_Users1" ManuallyRouted="false" />
         <AssociationConnector Association="HomeDbModel.FK_Cart_Products_Products" ManuallyRouted="false" />
         <AssociationConnector Association="HomeDbModel.FK_Products_Categories" ManuallyRouted="false" />
         <AssociationConnector Association="HomeDbModel.FK_Order_Product_Orders" ManuallyRouted="false" />
         <AssociationConnector Association="HomeDbModel.FK_Order_Product_Products" ManuallyRouted="false" />
         <AssociationConnector Association="HomeDbModel.FK_Orders_OrderStatuses" ManuallyRouted="false" />
-        <AssociationConnector Association="HomeDbModel.FK_Orders_Users" ManuallyRouted="false" />
-        <AssociationConnector Association="HomeDbModel.FK_Users_Roles" ManuallyRouted="false" />
-      </Diagram>
+        <EntityTypeShape EntityType="HomeDbModel.Users" Width="1.5" PointX="3" PointY="3.5" />
+        <AssociationConnector Association="HomeDbModel.FK_Cart_Users1" />
+        <AssociationConnector Association="HomeDbModel.FK_Orders_Users" />
+        <AssociationConnector Association="HomeDbModel.FK_Users_Roles" />
+        </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
 </edmx:Edmx>
