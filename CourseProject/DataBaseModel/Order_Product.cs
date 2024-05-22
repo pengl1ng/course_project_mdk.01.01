@@ -17,6 +17,7 @@ namespace CourseProject.DataBaseModel
         public int Order_Product_Id { get; set; }
         public int OrderId { get; set; }
         public int ProductId { get; set; }
+        public int ProductAmount { get; set; }
     
         public virtual Orders Orders { get; set; }
         public virtual Products Products { get; set; }

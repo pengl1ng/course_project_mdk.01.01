@@ -73,46 +73,46 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="DataBaseModel\Cart.cs">
-      <DependentUpon>HomeDbModel.tt</DependentUpon>
+      <DependentUpon>DbModelHome.tt</DependentUpon>
     </Compile>
     <Compile Include="DataBaseModel\Cart_Products.cs">
-      <DependentUpon>HomeDbModel.tt</DependentUpon>
+      <DependentUpon>DbModelHome.tt</DependentUpon>
     </Compile>
     <Compile Include="DataBaseModel\Categories.cs">
-      <DependentUpon>HomeDbModel.tt</DependentUpon>
+      <DependentUpon>DbModelHome.tt</DependentUpon>
     </Compile>
-    <Compile Include="DataBaseModel\HomeDbModel.Context.cs">
+    <Compile Include="DataBaseModel\DbModelHome.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>HomeDbModel.Context.tt</DependentUpon>
+      <DependentUpon>DbModelHome.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="DataBaseModel\HomeDbModel.cs">
+    <Compile Include="DataBaseModel\DbModelHome.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>HomeDbModel.tt</DependentUpon>
+      <DependentUpon>DbModelHome.tt</DependentUpon>
     </Compile>
-    <Compile Include="DataBaseModel\HomeDbModel.Designer.cs">
+    <Compile Include="DataBaseModel\DbModelHome.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>HomeDbModel.edmx</DependentUpon>
+      <DependentUpon>DbModelHome.edmx</DependentUpon>
     </Compile>
     <Compile Include="DataBaseModel\Orders.cs">
-      <DependentUpon>HomeDbModel.tt</DependentUpon>
+      <DependentUpon>DbModelHome.tt</DependentUpon>
     </Compile>
     <Compile Include="DataBaseModel\OrderStatuses.cs">
-      <DependentUpon>HomeDbModel.tt</DependentUpon>
+      <DependentUpon>DbModelHome.tt</DependentUpon>
     </Compile>
     <Compile Include="DataBaseModel\Order_Product.cs">
-      <DependentUpon>HomeDbModel.tt</DependentUpon>
+      <DependentUpon>DbModelHome.tt</DependentUpon>
     </Compile>
     <Compile Include="DataBaseModel\Products.cs">
-      <DependentUpon>HomeDbModel.tt</DependentUpon>
+      <DependentUpon>DbModelHome.tt</DependentUpon>
     </Compile>
     <Compile Include="DataBaseModel\Roles.cs">
-      <DependentUpon>HomeDbModel.tt</DependentUpon>
+      <DependentUpon>DbModelHome.tt</DependentUpon>
     </Compile>
     <Compile Include="DataBaseModel\Users.cs">
-      <DependentUpon>HomeDbModel.tt</DependentUpon>
+      <DependentUpon>DbModelHome.tt</DependentUpon>
     </Compile>
     <Compile Include="Helpers\AppHelper.cs" />
     <Compile Include="MainWindow.xaml.cs">
@@ -123,7 +123,19 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Pages\CartPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Pages\MainPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\OrderDetailsPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\OrdersPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -136,8 +148,17 @@
     <Compile Include="Pages\AuthorizationPage.xaml.cs">
       <DependentUpon>AuthorizationPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Pages\CartPage.xaml.cs">
+      <DependentUpon>CartPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\OrderDetailsPage.xaml.cs">
+      <DependentUpon>OrderDetailsPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\OrdersPage.xaml.cs">
+      <DependentUpon>OrdersPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\RegistartionPage.xaml.cs">
       <DependentUpon>RegistartionPage.xaml</DependentUpon>
@@ -159,12 +180,12 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EntityDeploy Include="DataBaseModel\HomeDbModel.edmx">
+    <EntityDeploy Include="DataBaseModel\DbModelHome.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>HomeDbModel.Designer.cs</LastGenOutput>
+      <LastGenOutput>DbModelHome.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <None Include="DataBaseModel\HomeDbModel.edmx.diagram">
-      <DependentUpon>HomeDbModel.edmx</DependentUpon>
+    <None Include="DataBaseModel\DbModelHome.edmx.diagram">
+      <DependentUpon>DbModelHome.edmx</DependentUpon>
     </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
@@ -204,16 +225,20 @@
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="DataBaseModel\HomeDbModel.Context.tt">
+    <Content Include="DataBaseModel\DbModelHome.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>HomeDbModel.edmx</DependentUpon>
-      <LastGenOutput>HomeDbModel.Context.cs</LastGenOutput>
+      <DependentUpon>DbModelHome.edmx</DependentUpon>
+      <LastGenOutput>DbModelHome.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="DataBaseModel\HomeDbModel.tt">
+    <Content Include="DataBaseModel\DbModelHome.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>HomeDbModel.edmx</DependentUpon>
-      <LastGenOutput>HomeDbModel.cs</LastGenOutput>
+      <DependentUpon>DbModelHome.edmx</DependentUpon>
+      <LastGenOutput>DbModelHome.cs</LastGenOutput>
     </Content>
+    <Resource Include="Images\asrockintelarc.jpg" />
+    <Resource Include="Images\msirtx3050.png" />
+    <Resource Include="Images\radeonrx6500xt.jpg" />
+    <Resource Include="Images\zotacgtx1650.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

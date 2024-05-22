@@ -70,3 +70,9 @@ D:\ProjectsC#\course_project_mdk.01.01\CourseProject\obj\Debug\Pages\Authorizati
 D:\ProjectsC#\course_project_mdk.01.01\CourseProject\obj\Debug\Pages\AuthorizationPage.baml
 D:\ProjectsC#\course_project_mdk.01.01\CourseProject\obj\Debug\Pages\RegistartionPage.g.cs
 D:\ProjectsC#\course_project_mdk.01.01\CourseProject\obj\Debug\Pages\RegistartionPage.baml
+D:\ProjectsC#\course_project_mdk.01.01\CourseProject\obj\Debug\Pages\CartPage.g.cs
+D:\ProjectsC#\course_project_mdk.01.01\CourseProject\obj\Debug\Pages\CartPage.baml
+D:\ProjectsC#\course_project_mdk.01.01\CourseProject\obj\Debug\Pages\OrdersPage.g.cs
+D:\ProjectsC#\course_project_mdk.01.01\CourseProject\obj\Debug\Pages\OrdersPage.baml
+D:\ProjectsC#\course_project_mdk.01.01\CourseProject\obj\Debug\Pages\OrderDetailsPage.g.cs
+D:\ProjectsC#\course_project_mdk.01.01\CourseProject\obj\Debug\Pages\OrderDetailsPage.baml

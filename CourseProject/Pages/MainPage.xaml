@@ -18,11 +18,25 @@
             <RowDefinition/>
         </Grid.RowDefinitions>
 
+        <StackPanel Orientation="Horizontal"
+                    Style="{StaticResource StackPanelShop}">
+            <Button x:Name="btnExit" Content="Выйти"
+                    Click="btnExit_Click"
+                    Style="{StaticResource OrderButton}"
+                    Margin="10,0,0,0"/>
+            <Button x:Name="btnOrders" Content="Мои заказы"
+                    Click="btnOrders_Click"
+                    Style="{StaticResource OrderButton}"
+                    HorizontalAlignment="Center"
+                    Margin="5,0,0,0"/>
+        </StackPanel>
+        
         <StackPanel Orientation="Horizontal" Grid.Row="0"
-                    Grid.ColumnSpan="2" 
+                    Grid.Column="1"
                     Style="{StaticResource StackPanelShop}">
             <TextBlock Text="Поиск:" Style="{StaticResource SearchTitle}"/>
-            <TextBox x:Name="tboxSearch" Style="{StaticResource SearchBar}"/>
+            <TextBox x:Name="tboxSearch" Style="{StaticResource SearchBar}"
+                     TextChanged="tboxSearch_TextChanged"/>
             <Button x:Name="btnCart" Click="btnCart_Click"
                     Style="{StaticResource CartButton}"/>
             <Grid Margin="50,5,5,5">
@@ -30,9 +44,9 @@
                            TextWrapping="Wrap">
                     <TextBlock.Text>
                         <MultiBinding StringFormat="{}{0} {1} {2}">
-                            <Binding Path="UserPatronimyc"/>
-                            <Binding Path="UserName"/>
                             <Binding Path="UserSurname"/>
+                            <Binding Path="UserName"/>
+                            <Binding Path="UserPatronimyc"/>
                         </MultiBinding>
                     </TextBlock.Text>
                 </TextBlock>
@@ -47,6 +61,78 @@
                 <ComboBox x:Name="cboxCategory"
                           SelectionChanged="cboxCategory_SelectionChanged"/>
             </StackPanel>
+            <StackPanel Orientation="Vertical"
+                        Margin="5" x:Name="ProcessorFilter"
+                        Visibility="Collapsed">
+                <TextBlock Text="Сортировка по производителю процесоров"/>
+                <ComboBox x:Name="cboxProcessorCompany"
+                          SelectionChanged="cboxProcessorCompany_SelectionChanged">
+                </ComboBox>
+            </StackPanel>
+            <StackPanel Orientation="Vertical"
+                        Margin="5" x:Name="GPUFilter"
+                        Visibility="Collapsed">
+                <TextBlock Text="Сортировка по производителю видеокарт"/>
+                <ComboBox x:Name="cboxGPUCompany"
+                          SelectionChanged="cboxGPUCompany_SelectionChanged">
+                </ComboBox>
+            </StackPanel>
+            <StackPanel Orientation="Vertical"
+                        Margin="5" x:Name="PCFilter"
+                        Visibility="Collapsed">
+                <TextBlock Text="Сортировка по производителю сборки"/>
+                <ComboBox x:Name="cboxPCCompany"
+                          SelectionChanged="cboxPCCompany_SelectionChanged"/>
+            </StackPanel>
+            <StackPanel Orientation="Vertical"
+                        Margin="5" x:Name="MotherboardFilter"
+                        Visibility="Collapsed">
+                <TextBlock Text="Сортировка по производителю сборки"/>
+                <ComboBox x:Name="cboxMotherboardCompany"
+                          SelectionChanged="cboxMotherboardCompany_SelectionChanged"/>
+            </StackPanel>
+            <StackPanel Orientation="Vertical"
+                        Margin="5" x:Name="DRAMFilter"
+                        Visibility="Collapsed">
+                <TextBlock Text="Сортировка по производителю сборки"/>
+                <ComboBox x:Name="cboxDRAM"
+                          SelectionChanged="cboxDRAM_SelectionChanged"/>
+            </StackPanel>
+            <StackPanel Orientation="Vertical"
+                        Margin="5" x:Name="StorageFilter"
+                        Visibility="Collapsed">
+                <TextBlock Text="Сортировка по производителю сборки"/>
+                <ComboBox x:Name="cboxStorageCompany"
+                          SelectionChanged="cboxStorageCompany_SelectionChanged"/>
+            </StackPanel>
+            <StackPanel Orientation="Vertical"
+                        Margin="5" x:Name="SupliesFilter"
+                        Visibility="Collapsed">
+                <TextBlock Text="Сортировка по производителю сборки"/>
+                <ComboBox x:Name="cboxSupliesCompany"
+                          SelectionChanged="cboxSupliesCompany_SelectionChanged"/>
+            </StackPanel>
+            <StackPanel Orientation="Vertical"
+                        Margin="5" x:Name="CoolingFilter"
+                        Visibility="Collapsed">
+                <TextBlock Text="Сортировка по производителю сборки"/>
+                <ComboBox x:Name="cboxCoolingCompany"
+                          SelectionChanged="cboxCoolingCompany_SelectionChanged"/>
+            </StackPanel>
+            <StackPanel Orientation="Vertical" Margin="5">
+                <TextBlock Text="Сортировка цены"/>
+                <RadioButton Content="Отсутствует" IsChecked="True"
+                             x:Name="PriceFilterNull"
+                             Click="PriceFilterNull_Click"/>
+                <RadioButton Content="По возрастанию" IsChecked="False"
+                             x:Name="PriceFilterAsc"
+                             Click="PriceFilterAsc_Click"/>
+                <RadioButton Content="По убыванию" IsChecked="False"
+                             x:Name="PriceFilterDesc"
+                             Click="PriceFilterDesc_Click"/>
+            </StackPanel>
+            <Button x:Name="btnClearFilters" Content="Очистить фильтры"
+                    Click="btnClearFilters_Click" Margin="5"/>
         </StackPanel>
 
         <ListView x:Name="lvProducts" Grid.Row="1"

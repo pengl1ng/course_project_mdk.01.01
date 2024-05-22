@@ -1,4 +1,4 @@
-﻿// Создание кода T4 для модели "D:\ProjectsC#\course_project_mdk.01.01\CourseProject\DataBaseModel\HomeDbModel.edmx" включено. 
+﻿// Создание кода T4 для модели "D:\ProjectsC#\course_project_mdk.01.01\CourseProject\DataBaseModel\DbModelHome.edmx" включено. 
 // Чтобы включить формирование кода прежних версий, измените значение свойства "Стратегия создания кода" конструктора
 // на "Legacy ObjectContext". Это свойство доступно в окне "Свойства", если модель
 // открыта в конструкторе.

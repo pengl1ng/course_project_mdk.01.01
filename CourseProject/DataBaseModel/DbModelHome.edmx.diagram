@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="57c9394cfcc342fca8a0b9a4484e4b06" Name="Diagram1">
+        <EntityTypeShape EntityType="KursBdModel.Cart" Width="1.5" PointX="5.25" PointY="4.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="KursBdModel.Cart_Products" Width="1.5" PointX="7.5" PointY="4" IsExpanded="true" />
+        <EntityTypeShape EntityType="KursBdModel.Categories" Width="1.5" PointX="3" PointY="10.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="KursBdModel.Order_Product" Width="1.5" PointX="7.5" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="KursBdModel.Orders" Width="1.5" PointX="5.25" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="KursBdModel.OrderStatuses" Width="1.5" PointX="3" PointY="7.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="KursBdModel.Products" Width="1.5" PointX="5.25" PointY="9.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="KursBdModel.Roles" Width="1.5" PointX="0.75" PointY="4.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="KursBdModel.Users" Width="1.5" PointX="3" PointY="3.5" IsExpanded="true" />
+        <AssociationConnector Association="KursBdModel.FK_Cart_Products_Cart" ManuallyRouted="false" />
+        <AssociationConnector Association="KursBdModel.FK_Cart_Users1" ManuallyRouted="false" />
+        <AssociationConnector Association="KursBdModel.FK_Cart_Products_Products1" ManuallyRouted="false" />
+        <AssociationConnector Association="KursBdModel.FK_Products_Categories" ManuallyRouted="false" />
+        <AssociationConnector Association="KursBdModel.FK_Order_Product_Orders" ManuallyRouted="false" />
+        <AssociationConnector Association="KursBdModel.FK_Order_Product_Products" ManuallyRouted="false" />
+        <AssociationConnector Association="KursBdModel.FK_Orders_OrderStatuses" ManuallyRouted="false" />
+        <AssociationConnector Association="KursBdModel.FK_Orders_Users" ManuallyRouted="false" />
+        <AssociationConnector Association="KursBdModel.FK_Users_Roles" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

@@ -1,0 +1,86 @@
+﻿<Page x:Class="CourseProject.Pages.CartPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:CourseProject.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="555" d:DesignWidth="980"
+      Title="CartPage">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"/>
+            <RowDefinition/>
+            <RowDefinition Height="50"/>
+        </Grid.RowDefinitions>
+
+        <StackPanel Grid.Row="0"
+                    Style="{StaticResource StackPanelShop}"
+                    Orientation="Horizontal">
+            <DockPanel Width="980" LastChildFill="False">
+                <Button VerticalAlignment="Center"
+                        Style="{StaticResource OrderButton}"
+                        x:Name="btnToMain"
+                        Content="К товарам"
+                        Click="btnToMain_Click"/>
+                <Grid Margin="50,5,5,5" DockPanel.Dock="Right">
+                    <TextBlock Style="{StaticResource UserNameTBlock}"
+                           TextWrapping="Wrap">
+                        <TextBlock.Text>
+                            <MultiBinding StringFormat="{}{0} {1} {2}">
+                                <Binding Path="UserSurname"/>
+                                <Binding Path="UserName"/>
+                                <Binding Path="UserPatronimyc"/>
+                            </MultiBinding>
+                        </TextBlock.Text>
+                    </TextBlock>
+                </Grid>
+            </DockPanel>
+        </StackPanel>
+
+        <ListView x:Name="lvCart"
+                  Grid.Row="1"
+                  ScrollViewer.HorizontalScrollBarVisibility="Hidden"
+                  Background="#F2E9D0">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <DockPanel LastChildFill="False">
+                        <Image Style="{StaticResource LViewProductImage}">
+                            <Image.Source>
+                                <Binding Path="ProductImage">
+                                    <Binding.TargetNullValue>
+                                        <ImageSource>/Images/cart.png</ImageSource>
+                                    </Binding.TargetNullValue>
+                                </Binding>
+                            </Image.Source>
+                        </Image>
+
+                        <TextBlock Text="{Binding ProductName}"
+                                   Style="{StaticResource CardProductName}"
+                                   Margin="20,0,0,0"/>
+
+                        <TextBlock Text="{Binding ProductPrice}"
+                                   Style="{StaticResource CardProductName}"
+                                   Margin="20,0,0,0"/>
+
+                        <TextBlock Text="{Binding Amount}"
+                                   Style="{StaticResource CardProductName}"
+                                   Margin="20,0,0,0"
+                                   DockPanel.Dock="Right"/>
+                    </DockPanel>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+
+        <StackPanel Grid.Row="2"
+                    Style="{StaticResource StackPanelShop}">
+            <Button HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    x:Name="btnOrder"
+                    Click="btnOrder_Click"
+                    Content="Заказать"
+                    Style="{StaticResource OrderButton}"/>
+        </StackPanel>
+    </Grid>
+</Page>

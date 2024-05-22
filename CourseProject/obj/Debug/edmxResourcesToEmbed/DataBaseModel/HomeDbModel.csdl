@@ -18,7 +18,7 @@
     <Property Name="ProductId" Type="Int32" Nullable="false" />
     <Property Name="ProductAmountInCart" Type="Int32" Nullable="false" />
     <NavigationProperty Name="Cart" Relationship="Self.FK_Cart_Products_Cart" FromRole="Cart_Products" ToRole="Cart" />
-    <NavigationProperty Name="Products" Relationship="Self.FK_Cart_Products_Products" FromRole="Cart_Products" ToRole="Products" />
+    <NavigationProperty Name="Products" Relationship="HomeDbModel.FK_Cart_Products_Products" FromRole="Cart_Products" ToRole="Products" />
   </EntityType>
   <EntityType Name="Categories">
     <Key>
@@ -26,7 +26,7 @@
     </Key>
     <Property Name="CategoryId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="CategoryName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-    <NavigationProperty Name="Products" Relationship="Self.FK_Products_Categories" FromRole="Categories" ToRole="Products" />
+    <NavigationProperty Name="Products" Relationship="HomeDbModel.FK_Products_Categories" FromRole="Categories" ToRole="Products" />
   </EntityType>
   <EntityType Name="Order_Product">
     <Key>
@@ -36,7 +36,7 @@
     <Property Name="OrderId" Type="Int32" Nullable="false" />
     <Property Name="ProductId" Type="Int32" Nullable="false" />
     <NavigationProperty Name="Orders" Relationship="Self.FK_Order_Product_Orders" FromRole="Order_Product" ToRole="Orders" />
-    <NavigationProperty Name="Products" Relationship="Self.FK_Order_Product_Products" FromRole="Order_Product" ToRole="Products" />
+    <NavigationProperty Name="Products" Relationship="HomeDbModel.FK_Order_Product_Products" FromRole="Order_Product" ToRole="Products" />
   </EntityType>
   <EntityType Name="Orders">
     <Key>
@@ -59,21 +59,6 @@
     <Property Name="StatusName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
     <NavigationProperty Name="Orders" Relationship="Self.FK_Orders_OrderStatuses" FromRole="OrderStatuses" ToRole="Orders" />
   </EntityType>
-  <EntityType Name="Products">
-    <Key>
-      <PropertyRef Name="ProductId" />
-    </Key>
-    <Property Name="ProductId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="ProductName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="ProductDescription" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="ProductPrice" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="ProductAmount" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="ProductCategory" Type="Int32" Nullable="false" />
-    <Property Name="ProductImage" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-    <NavigationProperty Name="Cart_Products" Relationship="Self.FK_Cart_Products_Products" FromRole="Products" ToRole="Cart_Products" />
-    <NavigationProperty Name="Categories" Relationship="Self.FK_Products_Categories" FromRole="Products" ToRole="Categories" />
-    <NavigationProperty Name="Order_Product" Relationship="Self.FK_Order_Product_Products" FromRole="Products" ToRole="Order_Product" />
-  </EntityType>
   <EntityType Name="Roles">
     <Key>
       <PropertyRef Name="RoleId" />
@@ -94,30 +79,6 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_Cart_Products_Products">
-    <End Role="Products" Type="Self.Products" Multiplicity="1" />
-    <End Role="Cart_Products" Type="Self.Cart_Products" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Products">
-        <PropertyRef Name="ProductId" />
-      </Principal>
-      <Dependent Role="Cart_Products">
-        <PropertyRef Name="ProductId" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_Products_Categories">
-    <End Role="Categories" Type="Self.Categories" Multiplicity="1" />
-    <End Role="Products" Type="Self.Products" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Categories">
-        <PropertyRef Name="CategoryId" />
-      </Principal>
-      <Dependent Role="Products">
-        <PropertyRef Name="ProductCategory" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <Association Name="FK_Order_Product_Orders">
     <End Role="Orders" Type="Self.Orders" Multiplicity="1" />
     <End Role="Order_Product" Type="Self.Order_Product" Multiplicity="*" />
@@ -127,18 +88,6 @@
       </Principal>
       <Dependent Role="Order_Product">
         <PropertyRef Name="OrderId" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_Order_Product_Products">
-    <End Role="Products" Type="Self.Products" Multiplicity="1" />
-    <End Role="Order_Product" Type="Self.Order_Product" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Products">
-        <PropertyRef Name="ProductId" />
-      </Principal>
-      <Dependent Role="Order_Product">
-        <PropertyRef Name="ProductId" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -161,26 +110,13 @@
     <EntitySet Name="Order_Product" EntityType="Self.Order_Product" />
     <EntitySet Name="Orders" EntityType="Self.Orders" />
     <EntitySet Name="OrderStatuses" EntityType="Self.OrderStatuses" />
-    <EntitySet Name="Products" EntityType="Self.Products" />
     <EntitySet Name="Roles" EntityType="Self.Roles" />
     <AssociationSet Name="FK_Cart_Products_Cart" Association="Self.FK_Cart_Products_Cart">
       <End Role="Cart" EntitySet="Cart" />
       <End Role="Cart_Products" EntitySet="Cart_Products" />
     </AssociationSet>
-    <AssociationSet Name="FK_Cart_Products_Products" Association="Self.FK_Cart_Products_Products">
-      <End Role="Products" EntitySet="Products" />
-      <End Role="Cart_Products" EntitySet="Cart_Products" />
-    </AssociationSet>
-    <AssociationSet Name="FK_Products_Categories" Association="Self.FK_Products_Categories">
-      <End Role="Categories" EntitySet="Categories" />
-      <End Role="Products" EntitySet="Products" />
-    </AssociationSet>
     <AssociationSet Name="FK_Order_Product_Orders" Association="Self.FK_Order_Product_Orders">
       <End Role="Orders" EntitySet="Orders" />
-      <End Role="Order_Product" EntitySet="Order_Product" />
-    </AssociationSet>
-    <AssociationSet Name="FK_Order_Product_Products" Association="Self.FK_Order_Product_Products">
-      <End Role="Products" EntitySet="Products" />
       <End Role="Order_Product" EntitySet="Order_Product" />
     </AssociationSet>
     <AssociationSet Name="FK_Orders_OrderStatuses" Association="Self.FK_Orders_OrderStatuses">
@@ -199,6 +135,19 @@
     <AssociationSet Name="FK_Users_Roles" Association="HomeDbModel.FK_Users_Roles">
       <End Role="Roles" EntitySet="Roles" />
       <End Role="Users" EntitySet="Users" />
+    </AssociationSet>
+    <EntitySet Name="Products" EntityType="HomeDbModel.Products" />
+    <AssociationSet Name="FK_Cart_Products_Products" Association="HomeDbModel.FK_Cart_Products_Products">
+      <End Role="Products" EntitySet="Products" />
+      <End Role="Cart_Products" EntitySet="Cart_Products" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Products_Categories" Association="HomeDbModel.FK_Products_Categories">
+      <End Role="Categories" EntitySet="Categories" />
+      <End Role="Products" EntitySet="Products" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Order_Product_Products" Association="HomeDbModel.FK_Order_Product_Products">
+      <End Role="Products" EntitySet="Products" />
+      <End Role="Order_Product" EntitySet="Order_Product" />
     </AssociationSet>
   </EntityContainer>
   <EntityType Name="Users">
@@ -250,6 +199,58 @@
       </Principal>
       <Dependent Role="Users">
         <PropertyRef Name="UserRole" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="Products">
+    <Key>
+      <PropertyRef Name="ProductId" />
+    </Key>
+    <Property Name="ProductId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ProductName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="ProductDescription" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="ProductPrice" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="ProductAmount" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="ProductCategory" Type="Int32" Nullable="false" />
+    <Property Name="ProductImage" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="ProductManufacturer" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Cart_Products" Relationship="HomeDbModel.FK_Cart_Products_Products" FromRole="Products" ToRole="Cart_Products" />
+    <NavigationProperty Name="Categories" Relationship="HomeDbModel.FK_Products_Categories" FromRole="Products" ToRole="Categories" />
+    <NavigationProperty Name="Order_Product" Relationship="HomeDbModel.FK_Order_Product_Products" FromRole="Products" ToRole="Order_Product" />
+  </EntityType>
+  <Association Name="FK_Cart_Products_Products">
+    <End Type="HomeDbModel.Products" Role="Products" Multiplicity="1" />
+    <End Type="HomeDbModel.Cart_Products" Role="Cart_Products" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Products">
+        <PropertyRef Name="ProductId" />
+      </Principal>
+      <Dependent Role="Cart_Products">
+        <PropertyRef Name="ProductId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Products_Categories">
+    <End Type="HomeDbModel.Categories" Role="Categories" Multiplicity="1" />
+    <End Type="HomeDbModel.Products" Role="Products" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Categories">
+        <PropertyRef Name="CategoryId" />
+      </Principal>
+      <Dependent Role="Products">
+        <PropertyRef Name="ProductCategory" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Order_Product_Products">
+    <End Type="HomeDbModel.Products" Role="Products" Multiplicity="1" />
+    <End Type="HomeDbModel.Order_Product" Role="Order_Product" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Products">
+        <PropertyRef Name="ProductId" />
+      </Principal>
+      <Dependent Role="Order_Product">
+        <PropertyRef Name="ProductId" />
       </Dependent>
     </ReferentialConstraint>
   </Association>

@@ -13,10 +13,10 @@ namespace CourseProject.DataBaseModel
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class HomeDbEntities : DbContext
+    public partial class KursBdEntities : DbContext
     {
-        public HomeDbEntities()
-            : base("name=HomeDbEntities")
+        public KursBdEntities()
+            : base("name=KursBdEntities")
         {
         }
     

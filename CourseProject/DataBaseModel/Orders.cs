@@ -24,7 +24,6 @@ namespace CourseProject.DataBaseModel
         public int OrderClient { get; set; }
         public int OrderStatus { get; set; }
         public System.DateTime OrderCreateDate { get; set; }
-        public int OrderPrice { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Order_Product> Order_Product { get; set; }

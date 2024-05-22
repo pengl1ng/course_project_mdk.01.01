@@ -92,7 +92,7 @@
             <Setter Property="FontSize" Value="12"/>
             <Setter Property="VerticalAlignment" Value="Center"/>
             <Setter Property="Foreground" Value="#BB5A5A"/>
-            <Setter Property="Margin" Value="233,5,5,5"/>
+            <Setter Property="Margin" Value="0,5,5,5"/>
             <Setter Property="FontFamily" Value="{StaticResource Roboto}"/>
         </Style>
 
@@ -123,7 +123,7 @@
                 </Setter.Value>
             </Setter>
             <Setter Property="BorderThickness" Value="0"/>
-            <Setter Property="Margin" Value="100,5,5,5"/>
+            <Setter Property="Margin" Value="5,5,5,5"/>
         </Style>
 
         <Style x:Key="AuthButton" TargetType="Button">
@@ -282,6 +282,10 @@
             <Setter Property="BorderBrush" Value="#E79E85"/>
             <Setter Property="CornerRadius" Value="5"/>
             <Setter Property="Background" Value="#EACEB4"/>
+        </Style>
+
+        <Style x:Key="OrderButton" TargetType="Button" BasedOn="{StaticResource AuthorizationPageButtons}">
+            <Setter Property="Width" Value="100"/>
         </Style>
     </Application.Resources>
 </Application>

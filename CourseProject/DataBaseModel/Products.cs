@@ -24,10 +24,11 @@ namespace CourseProject.DataBaseModel
         public int ProductId { get; set; }
         public string ProductName { get; set; }
         public string ProductDescription { get; set; }
-        public string ProductPrice { get; set; }
-        public string ProductAmount { get; set; }
+        public int ProductPrice { get; set; }
+        public int ProductAmount { get; set; }
         public int ProductCategory { get; set; }
         public string ProductImage { get; set; }
+        public string ProductManufacturer { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Cart_Products> Cart_Products { get; set; }

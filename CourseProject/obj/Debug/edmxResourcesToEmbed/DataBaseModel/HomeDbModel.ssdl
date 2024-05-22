@@ -59,6 +59,7 @@
     <Property Name="ProductAmount" Type="varchar" MaxLength="50" Nullable="false" />
     <Property Name="ProductCategory" Type="int" Nullable="false" />
     <Property Name="ProductImage" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="ProductManufacturer" Type="varchar" MaxLength="50" />
   </EntityType>
   <EntityType Name="Roles">
     <Key>
@@ -92,7 +93,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_Cart_Products_Products">
+  <Association Name="FK_Cart_Products_Products1">
     <End Role="Products" Type="Self.Products" Multiplicity="1" />
     <End Role="Cart_Products" Type="Self.Cart_Products" Multiplicity="*" />
     <ReferentialConstraint>
@@ -202,7 +203,7 @@
       <End Role="Cart" EntitySet="Cart" />
       <End Role="Cart_Products" EntitySet="Cart_Products" />
     </AssociationSet>
-    <AssociationSet Name="FK_Cart_Products_Products" Association="Self.FK_Cart_Products_Products">
+    <AssociationSet Name="FK_Cart_Products_Products1" Association="Self.FK_Cart_Products_Products1">
       <End Role="Products" EntitySet="Products" />
       <End Role="Cart_Products" EntitySet="Cart_Products" />
     </AssociationSet>
